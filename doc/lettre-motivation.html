@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre de motivation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a6d81;
+            --secondary: #1d4954;
+            --light: #f6f9fc;
+            --dark: #334756;
+            --accent: #90c5b5;
+            --accent-light: #c9dfd6;
+            --accent-dark: #336b78;
+            --text: #333;
+            --text-light: #666;
+        }
+        
+        /* Print optimization */
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        
+        @media print {
+            .print-button {
+                display: none !important;
+            }
+        }
+        
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: white;
+            font-size: 10pt;
+        }
+        
+        /* Bouton d'impression */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .print-button:hover {
+            background-color: var(--accent-light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm 0;
+        }
+        
+        .container-styled {
+            width: 100%;
+            padding: 0 20mm;
+        }
+        
+        /* Letter content */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18pt;
+            color: var(--primary);
+            margin-bottom: 10mm;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 3mm;
+        }
+        
+        .letter-content {
+            margin-bottom: 10mm;
+        }
+        
+        .letter-content p {
+            margin-bottom: 2mm;
+            text-indent: 1.5em;
+        }
+
+        
+        .letter-content i {
+            color: var(--accent);
+            width: 15px;
+            margin-right: 5px;
+        }
+        
+        .date {
+            text-align: right;
+            margin: 5mm 0 10mm;
+        }
+        
+        #destinataire {
+            margin-bottom: 10mm;
+        }
+        
+        .objet {
+            margin-bottom: 8mm;
+        }
+        
+        .objet p {
+            color: var(--dark);
+        }
+        
+        ul {
+            margin: 5mm 0;
+            padding-left: 5mm;
+        }
+        
+        ul li {
+            margin-bottom: 2mm;
+        }
+        
+        .pieces-jointes {
+            margin-top: 15mm;
+            font-size: 10pt;
+            color: var(--text-light);
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bouton d'impression -->
+    <button onclick="window.print()" class="print-button">Imprimer</button>
+    
+    <div class="container">
+        <!-- Page: Lettre de motivation -->
+        <section id="letter" class="section">
+            <div class="container-styled">
+                <!-- Nom de l'expéditeur -->
+                <h2>Alexia FONTAINE</h2>
+                <div class="letter-content">
+                    120 rue de Voves - 
+                    28630 Le Coudray<br>
+                    <i class="fas fa-phone"></i> 07.69.03.18.97<br>
+                    <i class="fas fa-envelope"></i> fontaine.alexia8@gmail.com</p>
+
+                    <!-- Date et lieu -->
+                    <div class="date">
+                        <p>Le Coudray, le 28 avril 2025</p><br>
+                    </div>
+
+                    <!-- Destinataire -->
+                    <div id="destinataire" style="text-align: right;">
+                        <p>À l'attention de <strong>la Direction des Ressources Humaines</strong></p>
+                        <p><strong>ECF BEQUET - Centre de Formation Professionnelle</strong></p>
+                        <p>11 Av. Gustave Eiffel, 28630 Gellainville</p>
+                    </div>
+
+                    <!-- Objet -->
+                    <div class="objet">
+                        <p><strong>Objet : Candidature au poste de Responsable de Centres de Formation Professionnelle</strong></p><br>
+                    </div>
+
+                    <!-- Formule d'appel -->
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <p>Madame, Monsieur,</p>
+                    </div>
+
+                    <!-- Paragraphe d'introduction -->
+                    <p>C'est avec un vif intérêt que je vous soumets ma candidature pour le poste de Responsable de Centres de Formation Professionnelle au sein de vos établissements d'Auneau et Gellainville. La perspective de contribuer au développement commercial et pédagogique d'un acteur reconnu dans la formation aux métiers du transport, de la logistique et du BTP correspond parfaitement à mon projet professionnel et à mes compétences.</p>
+
+                    <!-- Paragraphe de présentation -->
+                    <p>Titulaire d'un Master 2 en Humanités numériques spécialité Gestion des connaissances avec une expertise en médiation numérique et ingénierie pédagogique, j'ai développé une sérieuse expérience dans la conception et la mise en œuvre de dispositifs de formation innovants. Mon parcours professionnel m'a permis de maîtriser les aspects techniques (LMS, outils numériques) et humains (animation d'équipe, relation client) essentiels à la réussite d'un centre de formation professionnelle.</p>
+
+                    <!-- Paragraphe détaillant vos compétences -->
+                    <p>Mon expérience chez THALES, où j'ai travaillé sur l'automatisation de chaînes logistiques avec l'extraction et la transformation de données selon les règles métier, m'a permis de développer des compétences directement transférables au secteur du transport et de la logistique. De plus, mon passage au Centre Hospitalier de Dreux en tant qu'ingénieure pédagogique m'a dotée d'une expertise dans la gestion des services numériques et l'analyse de données, compétences essentielles pour optimiser les performances commerciales et pédagogiques de vos centres.</p>
+                    <div class="page-break"></div>
+                    <!-- Paragraphe avec liste -->
+                    <p>Mes compétences s'articulent autour de plusieurs axes particulièrement pertinents pour votre offre :</p>
+                    <ul>
+                        <li>Management d'équipe et animation commerciale avec une orientation résultats</li>
+                        <li>Maîtrise des outils numériques pour la formation (LMS, CMS) et production de contenus pédagogiques adaptés</li>
+                        <li>Gestion de projets avec suivi d'indicateurs de performance et respect des normes qualité</li>
+                        <li>Communication multi-supports, incluant la gestion d'un blog scientifique et la création de newsletters automatisées</li>
+                    </ul>
+
+                    <!-- Paragraphe de développement -->
+                    <p>Consciente des enjeux actuels du secteur de la formation professionnelle, je m'intéresse particulièrement à la digitalisation des parcours et à l'hybridation des modalités d'apprentissage qui représentent de véritables leviers de croissance. Ma capacité à piloter des projets innovants tout en assurant une gestion quotidienne rigoureuse serait un atout pour accompagner le développement de vos centres sur le territoire d'Eure-et-Loir.</p>
+
+                    <!-- Paragraphe abordant l'aspect commercial -->
+                    <p>Bien que mon parcours ne comprenne pas d'expérience commerciale directe, je possède plusieurs compétences transférables à ce domaine. Mon travail en ingénierie pédagogique m'a permis de développer une orientation client, comprenant l'analyse des besoins, la proposition de solutions adaptées, et la capacité à convaincre et à fidéliser différents publics. Ma formation récente en analyse de données (2023) démontre ma capacité à acquérir rapidement de nouvelles compétences et ma motivation à élargir mon champ d'expertise. Motivée et autonome dans les apprentissages, je suis particulièrement enthousiaste à l'idée de développer mes compétences commerciales au sein de votre structure, où ma connaissance approfondie des produits de formation sera un atout pour comprendre et valoriser votre offre auprès des clients.</p>
+
+                    <!-- Paragraphe de conclusion -->
+                    <p>Mon profil alliant compétences pédagogiques et techniques, combiné à ma capacité d'adaptation, répond aux exigences du poste que vous proposez. 
+                    <p>Ma rigueur organisationnelle, mon aptitude à l'apprentissage autonome et mon expérience dans la médiation numérique me permettraient de mener efficacement une politique de croissance de vos activités, en m'appuyant sur les équipes en place et leur expertise commerciale.</p>
+                    
+                    <!-- Demande d'entretien -->
+                    <p>Je me tiens à votre disposition pour un entretien qui me permettrait de vous exposer plus en détail ma motivation et mon adéquation avec le poste de Responsable de Centres de Formation Professionnelle.</p>
+                    <br>
+
+                    <!-- Formule de politesse -->
+                    <p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+ 
+                     
+                    <!-- Signature -->
+                    <div style="text-align: right; margin-bottom: 20px;"> 
+                        <img src="/img/AF-Doc6.png" alt="Signature d'Alexia Fontaine" style="width: 80px; height: auto;">               
+                        <p>Alexia FONTAINE</p>
+                </div>
+
+                <!-- Pièces jointes -->
+                <div class="pieces-jointes">
+                    <p>Pièces jointes :</p>
+                    <ul>
+                        <li>Curriculum Vitae</li>
+                        <li>Site de présentation (liens dans le CV)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // S'assurer que tout est bien formaté pour l'impression
+        window.onload = function() {
+            window.onbeforeprint = function() {
+                // Ajustements avant impression si nécessaire
+            };
+        };
+    </script>
+</body>
+</html>

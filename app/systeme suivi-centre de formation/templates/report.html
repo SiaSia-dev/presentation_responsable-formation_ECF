@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rapport de Synthèse - ECF BEQUET</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #2a6d81;
+            color: white;
+            font-weight: bold;
+        }
+        .section-title {
+            color: #1d4954;
+            border-bottom: 2px solid #90c5b5;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+        .metric-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2a6d81;
+        }
+        .trend-positive {
+            color: green;
+        }
+        .trend-negative {
+            color: red;
+        }
+        .table-opportunities {
+            border-left: 4px solid #198754;
+        }
+        .table-risks {
+            border-left: 4px solid #dc3545;
+        }
+        .exec-summary {
+            background-color: #1d4954;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">ECF BEQUET - Analyse de Performance</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/formations">Formations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sites">Sites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/satisfaction">Satisfaction</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/report">Rapport</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Rapport de Synthèse</h1>
+        <p class="lead">Analyse complète des performances des centres de formation ECF BEQUET</p>
+        
+        <div class="exec-summary">
+            <h3>Résumé Exécutif</h3>
+            <p>Ce rapport présente une analyse détaillée des performances des centres de formation ECF BEQUET sur le territoire d'Eure-et-Loir. Il met en évidence les forces et faiblesses actuelles, ainsi que les opportunités de développement et les axes d'amélioration.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <h5>Chiffre d'affaires</h5>
+                    <p class="h3">{{ "%.2f"|format(analyses.kpis['Chiffre d\'affaires total']) }} €</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bénéfice</h5>
+                    <p class="h3">{{ "%.2f"|format(analyses.kpis['Bénéfice total']) }} €</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Marge</h5>
+                    <p class="h3">{{ "%.1f"|format(analyses.kpis['Marge nette moyenne']) }}%</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Taux remplissage</h5>
+                    <p class="h3">{{ "%.1f"|format(analyses.kpis['Taux de remplissage moyen']) }}%</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Performance par Site</h2>
+        <div class="row">
+            {% for site, data in analyses.site_performance.iterrows() %}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">{{ site }}</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Chiffre d'affaires</p>
+                                <p class="metric-value">{{ "%.2f"|format(data.Revenu) }} €</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Bénéfice</p>
+                                <p class="metric-value">{{ "%.2f"|format(data.Bénéfice) }} €</p>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <p>Marge</p>
+                                <p class="metric-value">{{ "%.1f"|format(data.MargeNette) }}%</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Remplissage</p>
+                                <p class="metric-value">{{ "%.1f"|format(data.TauxRemplissage) }}%</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Satisfaction</p>
+                                <p class="metric-value">{{ "%.1f"|format(data.Satisfaction) }}/10</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h2 class="section-title">Objectifs vs. Réalisations</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Objectif CA</th>
+                        <th>Réalisation CA</th>
+                        <th>Taux atteinte</th>
+                        <th>Objectif Inscriptions</th>
+                        <th>Réalisation Inscriptions</th>
+                        <th>Taux atteinte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for site, data in analyses.objectives_analysis.iterrows() %}
+                    <tr>
+                        <td><strong>{{ site }}</strong></td>
+                        <td>{{ "%.2f"|format(data.RevenusObjectif) }} €</td>
+                        <td>{{ "%.2f"|format(data.RevenusRéalisation) }} €</td>
+                        <td class="{% if data.RevenusAtteinte >= 90 %}trend-positive{% elif data.RevenusAtteinte < 75 %}trend-negative{% endif %}">
+                            {{ "%.1f"|format(data.RevenusAtteinte) }}%
+                        </td>
+                        <td>{{ "%.0f"|format(data.InscriptionsObjectif) }}</td>
+                        <td>{{ "%.0f"|format(data.InscriptionsRéalisation) }}</td>
+                        <td class="{% if data.InscriptionsAtteinte >= 90 %}trend-positive{% elif data.InscriptionsAtteinte < 75 %}trend-negative{% endif %}">
+                            {{ "%.1f"|format(data.InscriptionsAtteinte) }}%
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="section-title">Opportunités de Développement</h2>
+                <table class="table table-opportunities">
+                    <thead>
+                        <tr>
+                            <th>Formation</th>
+                            <th>Marge</th>
+                            <th>Remplissage</th>
+                            <th>Satisfaction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formation, data in analyses.opportunities.iterrows() %}
+                        <tr>
+                            <td><strong>{{ formation }}</strong></td>
+                            <td>{{ "%.1f"|format(data.MargeNette) }}%</td>
+                            <td>{{ "%.1f"|format(data.TauxRemplissage) }}%</td>
+                            <td>{{ "%.1f"|format(data.Satisfaction) }}/10</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-md-6">
+                <h2 class="section-title">Formations à Risque</h2>
+                <table class="table table-risks">
+                    <thead>
+                        <tr>
+                            <th>Formation</th>
+                            <th>Marge</th>
+                            <th>Remplissage</th>
+                            <th>Satisfaction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formation, data in analyses.risks.iterrows() %}
+                        <tr>
+                            <td><strong>{{ formation }}</strong></td>
+                            <td>{{ "%.1f"|format(data.MargeNette) }}%</td>
+                            <td>{{ "%.1f"|format(data.TauxRemplissage) }}%</td>
+                            <td>{{ "%.1f"|format(data.Satisfaction) }}/10</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Recommandations Stratégiques</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <h4><i class="fas fa-chart-line me-2"></i> Développement commercial</h4>
+                            <ul>
+                                <li>Augmenter le nombre de sessions pour les formations les plus rentables</li>
+                                <li>Développer des modules complémentaires</li>
+                                <li>Cibler les entreprises locales avec des offres personnalisées</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <h4><i class="fas fa-coins me-2"></i> Optimisation financière</h4>
+                            <ul>
+                                <li>Réviser la structure de coûts des formations à faible marge</li>
+                                <li>Mutualiser les ressources entre les sites</li>
+                                <li>Investir dans la digitalisation pour réduire les coûts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <h4><i class="fas fa-user-graduate me-2"></i> Qualité pédagogique</h4>
+                            <ul>
+                                <li>Moderniser les supports de formation</li>
+                                <li>Former continuellement les formateurs</li>
+                                <li>Développer l'hybridation des modalités d'apprentissage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4>Plan d'action prioritaire</h4>
+                    <ol>
+                        <li>Renforcer les actions marketing pour les formations à fort potentiel identifiées</li>
+                        <li>Revoir l'offre des formations à risque (refonte ou abandon)</li>
+                        <li>Harmoniser les bonnes pratiques entre les sites d'Auneau et Gellainville</li>
+                        <li>Mettre en place un suivi mensuel des KPIs identifiés dans ce rapport</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5 mb-5">
+            <a href="#" class="btn btn-primary" onclick="window.print();">
+                <i class="fas fa-print me-2"></i> Imprimer ce rapport
+            </a>
+            <a href="#" class="btn btn-success ms-2">
+                <i class="fas fa-file-excel me-2"></i> Exporter les données (Excel)
+            </a>
+            <a href="#" class="btn btn-info ms-2">
+                <i class="fas fa-chart-pie me-2"></i> Générer des graphiques supplémentaires
+            </a>
+        </div>
+        
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>ECF BEQUET - Centres de Formation Professionnelle</h5>
+                        <p>Analyse de Performance - Rapport généré automatiquement</p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p>Date de génération: {{ now().strftime('%d/%m/%Y') }}</p>
+                        <p>Prototype développé par Alexia Fontaine</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        </body>
+        </html>

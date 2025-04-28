@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Alexia Fontaine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a6d81;
+            --secondary: #1d4954;
+            --light: #f6f9fc;
+            --dark: #334756;
+            --accent: #90c5b5;
+            --accent-light: #c9dfd6;
+            --accent-dark: #336b78;
+            --text: #333;
+            --text-light: #666;
+            --shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        @media print {
+            .print-button {
+                display: none !important;
+            }
+        }
+
+        /* Bouton d'impression */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .print-button:hover {
+            background-color: var(--accent-light);
+        }
+
+        /* A4 Print Optimization Styles */
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            font-size: 10pt;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 0 10mm;
+        }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8mm;
+            border-bottom: 2px solid #90c5b5;
+            padding-bottom: 4mm;
+            text-indent: 2em;
+        }
+
+        .cv-header h1 {
+            font-size: 20pt;
+            margin-bottom: 2mm;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+            letter-spacing: 0.3px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .cv-header .header-subtitle {
+            font-size: 10pt;
+            color: #666;
+        }
+
+        .cv-contact {
+            text-align: right;
+            font-size: 9pt;
+        }
+
+        .section-title-container {
+            margin-bottom: 5mm;
+        }
+
+        .section-title {
+            font-size: 12pt;
+            color: #2a6d81;
+            border-bottom: 1px solid #90c5b5;
+            padding-bottom: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .section-content {
+            margin-bottom: 6mm;
+            text-indent: 1em;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+        }
+
+        .experience-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 3mm;
+            margin-bottom: 3mm;
+        }
+
+        .experience-item h3 {
+            font-size: 10pt;
+            color: #2a6d81;
+            margin-bottom: 1mm;
+        }
+
+        .experience-item p {
+            font-size: 9pt;
+            margin-bottom: 1mm;
+        }
+
+        .skill-list {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .skill-list li {
+            font-size: 9pt;
+            margin-bottom: 1mm;
+        }
+
+        .skill-grid {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-grid > div {
+            width: 48%;
+        }
+
+        .formation-item {
+            margin-bottom: 3mm;
+        }
+
+        .formation-item h3 {
+            font-size: 10pt;
+            color: #2a6d81;
+            margin-bottom: 1mm;
+        }
+
+        .formation-item p {
+            font-size: 9pt;
+            margin-bottom: 1mm;
+            color: #666;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 6mm;
+            border-top: 1px solid #90c5b5;
+            padding-top: 4mm;
+        }
+
+        .social-links a {
+            color: #2a6d81;
+            text-decoration: none;
+            font-size: 10pt;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links a i {
+            margin-right: 5px;
+        }
+
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0 auto;
+                padding: 1cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bouton d'impression -->
+    <button onclick="window.print()" class="print-button">Imprimer</button>
+
+    <section class="section cv-section">
+        <div class="container">
+            <div class="cv-header">
+                <div>
+                    <h1>ALEXIA FONTAINE</h1>
+                    <p class="header-subtitle">FORMATION | MANAGEMENT | PÉDAGOGIE</p>
+                </div>
+                <div class="cv-contact">
+                    <p><i class="fas fa-phone"></i> 07.69.03.18.97</p>
+                    <p><i class="fas fa-envelope"></i> fontaine.alexia8@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 120 rue de Voves, 28630 Le Coudray</p>
+                    <p><i class="fas fa-car"></i> Permis B - véhicule</p>
+                </div>
+            </div>
+
+            <!-- Profil -->
+            <section class="section-content">
+                <div class="section-title-container">
+                    <h2 class="section-title">Profil</h2>
+                </div>
+                <p>Professionnelle en ingénierie pédagogique et gestion de projets numériques, je souhaite mettre mes compétences au service du développement commercial et pédagogique de vos centres de formation professionnelle.</p><br>
+                <p>Mon expertise technique en systèmes de gestion d'apprentissage (LMS), en automatisation des processus et en analyse de données, combinée à mes expériences en animation d'équipe et en accompagnement au changement, me permettent d'optimiser les performances d'un organisme de formation tout en garantissant la qualité des services proposés.</p><br> 
+                <p>Force de proposition, rigoureuse et orientée résultats, je sais prendre des initiatives et adopter une vision stratégique pour développer l'activité d'un centre de profits dans le respect des normes qualité et réglementaires.</p>
+                <br><p style="text-align: center;">
+                    <a href="https://presentation-assistante-formation.netlify.app/" target="_blank">
+                        SITE de PRESENTATION - Formation</a>
+                </p>
+            </section>
+
+            <!-- Compétences -->
+            <section class="section-content">
+                <div class="section-title-container">
+                    <h2 class="section-title">Compétences</h2>
+                </div>
+                <div class="skill-grid">
+                    <div>
+                        <h3>Managériales & Relation Client</h3>
+                        <ul class="skill-list">
+                            <li>Animation d'équipe et management de proximité</li>
+                            <li>Analyse des besoins et orientation résultats</li>
+                            <li>Gestion de planning et d'activité</li>
+                            <li>Capacité d'adaptation et apprentissage autonome</li>
+                            <li>Suivi de performance et d'indicateurs qualité</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Techniques & Pédagogiques</h3>
+                        <ul class="skill-list">
+                            <li>Gestion des services numériques : LMS-CMS</li>
+                            <li>Automatisation de chaîne logistique et de processus</li>
+                            <li>Conception et médiatisation de contenus pédagogiques</li>
+                            <li>Veille réglementaire et qualité (normes formation)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expérience -->
+            <section class="section-content">
+                <div class="section-title-container">
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Automatisation de Chaîne Logistique</h3>
+                    <p><strong>THALES</strong> | Sept 2023 - Nov 2023</p>
+                    <ul class="skill-list">
+                        <li>Extraction et transformation des données selon les règles métier</li>
+                        <li>Optimisation des processus logistiques</li>
+                        <li>Développement d'outils de reporting et de suivi d'activité</li>
+                        <li>Formation des utilisateurs aux nouveaux processus</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Ingénieure pédagogique / Ingénieure hospitalier</h3>
+                    <p><strong>CENTRE HOSPITALIER DREUX</strong> | 2021-2022</p>
+                    <ul class="skill-list">
+                        <li>Gestion complète des services numériques (LMS)</li>
+                        <li>Management de projets de formation et conduite du changement</li>
+                        <li>Diffusion et analyse d'enquêtes de satisfaction</li>
+                        <li>Développement d'applications web (framework Python et R)</li>
+                        <li>Animation atelier de formation</li>
+                    </ul>
+                </div>
+
+
+                <div class="experience-item">
+                    <h3>Conceptrice pédagogique – Rédactrice web</h3>
+                    <p><strong>CENTRE HOSPITALIER DREUX</strong> | 2021-2022</p>
+                    <p><strong>CULTUR'MOUV</strong> | 2017</p>
+                    <ul class="skill-list">
+                        <li>Analyses fonctionnelles et rédaction de documentations techniques</li>
+                        <li>Conception de sites et organisation éditoriale</li>
+                        <li>Administration de systèmes de gestion des contenus (CMS)</li>
+                        <li>Création de newsletters hebdomadaires automatisées</li>
+                        <li>Animation d'un blog scientifique (carnet Hypothèses)</li>
+                    </ul>
+                </div>
+
+
+                <div class="experience-item">
+                    <h3>Responsable de ressources documentaires et scientifiques</h3>
+                    <p><strong>FNSEA</strong> | 2024</p>
+                    <p><strong>INRAP</strong> | 2009-2010</p>
+                    <p><strong>SERVICE RÉGIONAL DE LORRAINE</strong> | 2009</p>
+                    <ul class="skill-list">
+                        <li>Supervision d'équipe et coordination de projets</li>
+                        <li>Gestion budgétaire et reporting d'activité</li>
+                        <li>Relation clients et partenaires institutionnels</li>
+                        <li>Mise en place de systèmes de classement et d'archivage</li>
+                        <li>Suivi des normes qualité et réglementaires</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Formation -->
+            <section class="section-content">
+                <div class="section-title-container">
+                    <h2 class="section-title">Formation</h2>
+                </div>
+                
+                <div class="formation-item">
+                    <h3>Master 2 Humanités numériques</h3>
+                    <p>SCIENCES DU LANGAGE spécialité GESTION DES CONNAISSANCES, FORMATIONS (2018)</p>
+                    <p>Parcours médiation numérique et ingénierie pédagogique</p>
+                    <p>Mention TRÈS BIEN</p>
+                    <p>UNIVERSITÉ PAUL VALÉRY - Montpellier</p>
+                </div>
+
+                <div class="formation-item">
+                    <h3>Analyste de données</h3>
+                    <p>Session de formation | Février-Novembre 2023</p>
+                    <p>M2i Formation - Orléans</p>
+                </div>
+
+                <div class="formation-item">
+                    <h3>Master 2 Archéomatique</h3>
+                    <p>SCIENCES HISTORIQUES spécialité GÉOMATIQUE appliquée à l'ARCHÉOLOGIE (2008)</p>
+                    <p>Mention BIEN</p>
+                    <p>UNIVERSITÉ FRANÇOIS RABELAIS - Tours</p>
+                </div>
+
+                <div class="formation-item">
+                    <h3>PostgreSQL / PostGIS</h3>
+                    <p>Session de formation (niveau 1) | Avril 2020</p>
+                    <p>MAKINA CORPUS - Paris</p>
+                </div>
+            </section>
+        </div><br>
+       
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/alexiafontaine" target="_blank">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://portfolio-af-v2.netlify.app/" target="_blank">
+                <i class="fas fa-briefcase"></i> Portfolio
+            </a>
+            <a href="#" target="_blank">
+                <i class="fas fa-pen"></i> Blog scientifique (carnet Hypothèses)
+            </a>
+        </div>
+    </section>
+</body>
+</html>
